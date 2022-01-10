@@ -1,0 +1,586 @@
+:root {
+  --header-big-height: 10rem;
+  --header-small-height: 8rem;
+  --primary-color: #405c69;
+  --primary-color-low-opacity: #22333bb7;
+  --secondary-color: #664434;
+  --secondary-color-light: rgba(119, 71, 49, 0.5);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+body {
+  background-color: #f2f2f2;
+  min-width: 350px;
+}
+
+.blur {
+  filter: blur(5px);
+  position: fixed;
+}
+
+.home-top-section {
+  background: url('https://images.pexels.com/photos/982612/pexels-photo-982612.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')
+    no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 60vh;
+  width: 100%;
+  color: white;
+  font-weight: 100;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.home-top-section::after {
+  content: '';
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+header {
+  background-color: rgba(24, 24, 24, 0.2);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: background-color 0.5s ease;
+  z-index: 1000;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+main {
+  width: 100%;
+}
+
+.nav {
+  width: 100%;
+  margin: 0 auto;
+  height: var(--header-big-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: height 0.5s ease;
+  position: relative;
+}
+
+.not-home-page {
+  background-color: black;
+}
+
+.not-home-page .nav {
+  height: var(--header-small-height);
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.nav .logo-header {
+  margin-left: 4rem;
+}
+
+.nav .logo {
+  font-size: 2.7rem;
+  font-weight: bold;
+}
+
+.nav .location {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.nav-list {
+  position: absolute;
+  top: 0;
+  width: 40%;
+  max-width: 500px;
+  height: 100%;
+  list-style: none;
+  margin-right: auto;
+  margin-left: 4rem;
+  min-height: 250px;
+  background-color: var(--secondary-color);
+  transition: 0.4s ease-in;
+  margin-left: 0;
+  transform: translateX(-100%);
+  z-index: 5000;
+}
+
+.nav-list ul {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.nav-list li {
+  /* padding: 4rem 1.7rem; */
+  text-transform: uppercase;
+  color: #fff;
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.nav-list li:first-of-type {
+  margin-top: 4rem;
+}
+
+.nav-list li a,
+.menu-nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.5rem;
+  letter-spacing: 10px;
+  display: block;
+  margin: 0 2rem;
+  position: relative;
+  padding: 4rem 1.7rem;
+}
+
+.nav-list li:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-list li:hover a {
+  padding-left: 2rem;
+}
+
+.burger,
+.exit {
+  display: block;
+  cursor: pointer;
+  margin-right: 4rem;
+  z-index: 2000;
+}
+
+.burger div,
+.exit div {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px;
+  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
+}
+
+.exit {
+  position: absolute;
+  font-size: 4rem;
+  top: 0;
+  right: 0;
+  margin: 3rem;
+  cursor: pointer;
+  color: black;
+}
+
+.exit:hover div {
+  background-color: black;
+}
+
+.exit .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.exit .line2 {
+  opacity: 0;
+}
+
+.exit .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.toggle,
+.hide {
+  display: none;
+}
+
+@media screen and (max-width: 415px) {
+  .nav .logo {
+    font-size: 1.8rem;
+  }
+}
+
+/* Apply styles after scroll */
+
+.scrolling-active {
+  background-color: #000;
+  box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
+}
+
+.scrolling-active .nav {
+  height: 8rem;
+}
+
+.scrolling-active .nav a {
+  color: #fff;
+}
+
+.scrolling-active .nav-list {
+  background-color: var(--primary-color);
+}
+
+.scrolling-active .menu-nav-links {
+  display: flex;
+}
+
+.scrolling-active .burger {
+  display: none;
+}
+
+.menu-nav-links {
+  display: none;
+  list-style: none;
+}
+
+.menu-nav-links li a {
+  font-size: 2.1rem;
+  letter-spacing: 1px;
+}
+
+.menu-nav-links li a::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5 ease;
+}
+
+.menu-nav-links li a:hover::after {
+  transform: scaleX(1);
+}
+
+@media screen and (max-width: 885px) {
+  .scrolling-active .burger {
+    display: block;
+  }
+
+  .scrolling-active .menu-nav-links {
+    display: none;
+  }
+}
+
+/* Apply styles after scroll end */
+
+/* Main content */
+
+.main-content {
+  width: 95%;
+  margin: 2rem auto 0 auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+.recipe {
+  margin: 5rem 0;
+  display: flex;
+}
+
+.recipe-col {
+  width: 50%;
+  margin: 0 1rem;
+}
+
+.recipe-image {
+  z-index: -1;
+}
+
+.recipe-info {
+  display: flex;
+  align-items: center;
+}
+
+.recipe-info .content {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.recipe-info .content > * {
+  margin-bottom: 1rem;
+}
+
+.recipe-info .content h2 {
+  font-size: 4.3rem;
+  font-weight: 600;
+  color: rgb(32, 32, 32);
+}
+
+.recipe-info .content p {
+  font-size: 1.7rem;
+  line-height: 35px;
+  color: rgb(95, 95, 95);
+  text-align: justify;
+}
+
+.recipe-info .content i {
+  font-size: 2.7rem;
+  color: var(--primary-color-low-opacity);
+}
+
+.main-content .recipe:nth-child(even) .recipe-image {
+  order: 2;
+}
+
+.main-content .recipe:nth-child(even) .recipe-info {
+  order: 1;
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .main-content {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .nav-list {
+    width: 50%;
+    min-width: 250px;
+  }
+
+  .recipe {
+    flex-direction: column;
+  }
+
+  .recipe-col {
+    width: 100%;
+    margin: 0;
+  }
+
+  .main-content .recipe:nth-child(even) .recipe-image {
+    order: 1;
+  }
+
+  .main-content .recipe:nth-child(even) .recipe-info {
+    order: 2;
+  }
+
+  .recipe-info .content {
+    margin: 3rem auto 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .recipe-info .content h2 {
+    font-size: 3.5rem;
+  }
+
+  .recipe-info .content p {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 770px) {
+}
+
+.other-content {
+  width: 90%;
+  margin: calc(var(--header-big-height) + 4rem) auto 0 auto;
+  max-width: 1300px;
+}
+
+.other-content-heading {
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #333;
+}
+
+/* ===================================================  MENU ===================================================================== */
+
+.menu-section {
+  margin-top: 3rem;
+}
+
+.section-heading {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 2px solid var(--secondary-color-light);
+  width: 400px;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+.card h2 {
+  text-transform: uppercase;
+  padding: 10px;
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+}
+
+.card p {
+  padding: 10px;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.card:hover {
+  background-color: rgb(105, 105, 105);
+  color: white;
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: all 0.5s ease;
+}
+
+/* ==============================================  CONTACT  ===================================================================== */
+
+.form-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact form {
+  background-color: white;
+  width: 50%;
+  min-width: 350px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 6rem;
+}
+
+.input-container:not(.submit-container) {
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.form-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.input-container {
+  width: 100%;
+}
+
+.form-row .input-container:first-child {
+  margin-right: 1.3rem;
+}
+
+.input-container input[type='text'],
+.input-container input[type='email'] {
+  width: 100%;
+  padding: 7px;
+  font-size: 14px;
+}
+
+.input-container label {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 0.7rem;
+}
+
+.textarea textarea {
+  margin-top: 1rem;
+  resize: none;
+  width: 100%;
+  font-size: 14px;
+  transition: all 0.4s ease;
+  padding: 10px;
+}
+
+.textarea textarea:focus,
+.input-container input:focus {
+  outline: none;
+  border: 2px solid var(--secondary-color-light);
+  box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  background-color: var(--secondary-color-light);
+  color: white;
+  font-size: 2.2rem;
+  letter-spacing: 5px;
+  border: none;
+  padding: 1.4rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.submit-btn:hover {
+  background-color: rgb(105, 105, 105);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+/* ==============================================  About  ===================================================================== */
+
+.about-image {
+  width: 55%;
+  margin: 0 auto;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.about-text {
+  width: 90%;
+  margin: 1rem auto 0 auto;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: justify;
+  font-weight: 400;
+}
